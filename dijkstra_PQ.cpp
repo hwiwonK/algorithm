@@ -52,6 +52,7 @@ int dijkstra_pq(int s) {
 			}
 		}
 	}
+	return D[V];
 }
 
 int main() {
