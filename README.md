@@ -9,4 +9,4 @@
 
 - Dijkstra 알고리즘 + priority queue 이용하기
 
-- BST로 최단거리 구하기
+- BFS로 최단거리 구하기
