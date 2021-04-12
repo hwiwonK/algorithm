@@ -12,7 +12,15 @@
 - BFS로 최단거리 구하기
 
 ## 4/9 Graph 알고리즘 2
-*문제 : S1251, *
+*문제 : S1251, J1060*
 - Disjoint set
 - Prim algorithm
 - Kruskal algorithm
+
+
+## 4/12 동적계획법
+*문제 : J1077, J1278, S3282*
+- 피보나치 (sliding window 사용)
+- 거스름돈 구하기 (1D, 2D table 사용)
+- 이항계수 구하기
+- Knapsack (dp, dfs(백트래킹), bfs, best-first-search)
