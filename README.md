@@ -24,3 +24,9 @@
 - 거스름돈 구하기 (1D, 2D table 사용)
 - 이항계수 구하기
 - Knapsack (dp, dfs(백트래킹), bfs, best-first-search)
+
+## 4/13 동적계획법2
+*문제 : J1871, J2191, S1263*
+- all pairs shortest (floyd, dijkstra)
+- LIS
+- Edit distance
