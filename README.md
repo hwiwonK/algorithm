@@ -26,7 +26,8 @@
 - Knapsack (dp, dfs(백트래킹), bfs, best-first-search)
 
 ## 4/13 동적계획법2
-*문제 : J1871, J2191, S1263*
+*문제 : ~~J1871~~, ~~J2191~~, ~~S1263~~*
+(S1263 우선순위 큐 써서 풀어보기)
 - all pairs shortest (floyd, dijkstra)
 - LIS
 - Edit distance
