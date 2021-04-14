@@ -27,7 +27,14 @@
 
 ## 4/13 동적계획법2
 *문제 : ~~J1871~~, ~~J2191~~, ~~S1263~~*
+(S1263 floyd, dijkstra)
 (S1263 우선순위 큐 써서 풀어보기)
 - all pairs shortest (floyd, dijkstra)
 - LIS
 - Edit distance
+
+## 4/14 동적계획법3
+*문제 : S1260, J1220, J1858, ~~S1264~~*
+(S1260 제출시 오류)
+- LCS(Longest Common Subsequence)
+- MCM(Matrix Chain Multiplication)
