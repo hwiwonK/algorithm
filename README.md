@@ -38,3 +38,10 @@
 (S1260 제출시 오류)
 - LCS(Longest Common Subsequence)
 - MCM(Matrix Chain Multiplication)
+
+## 4/15 동적계획법4
+*문제 : J1545, J1863, J1133*
+- TSP(외판원 문제)
+  완전검색(불가), DP기반 접근
+- TSP 근사 알고리즘
+  MST알고리즘 이용, 비트 이용 DP
