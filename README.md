@@ -35,7 +35,6 @@
 
 ## 4/14 동적계획법3
 *문제 : ~~S1260~~, ~~J1220~~, J1858, ~~S1264~~*
-(S1260 제출시 오류)
 - LCS(Longest Common Subsequence)
 - MCM(Matrix Chain Multiplication)
 
