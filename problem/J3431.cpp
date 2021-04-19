@@ -8,6 +8,8 @@ const int INFINITI = 999;
 
 int tong[N_MAX + 1][2] = { 0, };
 int sortIdx[N_MAX + 1] = { 0, };
+int group[N_MAX + 1] = { 0, };
+int groupX2[N_MAX + 1] = { 0, };
 //int sortIdx2[N_MAX + 1] = { 0, }; //x2 기준
 //int maxLen[N_MAX + 1] = { 0, }; //각 인덱스까지 중 길이 max인 통나무 인덱스 저장
 
@@ -77,7 +79,11 @@ int jump(int tong1, int tong2, int N) {
 	return 1;
 }
 
+void grouping(int N) {
 
+
+
+}
 
 int main() {
 
@@ -94,6 +100,7 @@ int main() {
 	//x1(시작점) -> 길이 기준 정렬, 오름차순
 	sortTong(N);
 
+	grouping(N);
 
 	for (int i = 1; i <= Q; i++) {
 		cin >> tong1 >> tong2;
