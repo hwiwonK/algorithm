@@ -15,43 +15,6 @@ int groupX2[N_MAX + 1] = { 0, };
 //int sortIdx2[N_MAX + 1] = { 0, }; //x2 기준
 //int maxLen[N_MAX + 1] = { 0, }; //각 인덱스까지 중 길이 max인 통나무 인덱스 저장
 
-void sortTong(int N) {
-	int minIdx = -1;
-	int minVal = 2099999999;
-	int tmp = -1;
-
-	for (int i = 1; i <= N; i++) {
-		sortIdx[i] = i;
-	}
-
-	for (int i = 1; i <= N; i++) {
-		minIdx = i;
-		minVal = tong[sortIdx[minIdx]][0];
-
-		for (int j = i + 1; j <= N; j++) {
-			if (tong[sortIdx[j]][0] <= minVal) {
-				if (tong[sortIdx[j]][0] == minVal) {
-					if (tong[sortIdx[minIdx]][1] - tong[sortIdx[minIdx]][0] > tong[sortIdx[j]][1] - tong[sortIdx[j]][0]) {
-						minIdx = j;
-						minVal = tong[sortIdx[minIdx]][0];
-					}
-
-				}
-				else {
-					minIdx = j;
-					minVal = tong[sortIdx[minIdx]][0];
-				}
-			}
-		}
-
-		//idx swap하기
-		tmp = sortIdx[i];
-		sortIdx[i] = sortIdx[minIdx];
-		sortIdx[minIdx] = tmp;
-	}
-
-}
-
 
 //quick sort로 구현해보기
 void quickSort(int start, int end, int N) {
@@ -127,7 +90,8 @@ int main() {
 	cin >> N >> Q;
 
 	for (int i = 1; i <= N; i++) {
-		cin >> tong[i][0] >> tong[i][1] >> y;
+		scanf("%d %d %d", &tong[i][0], &tong[i][1], &y);
+		//cin >> tong[i][0] >> tong[i][1] >> y;
 		sortIdx[i] = i;
 	}
 
@@ -139,33 +103,6 @@ int main() {
 
 	grouping(N);
 
-	//for (int i = 1; i <= N; i++) {
-	//	cout << sortIdx[i] << " ";
-	//}
-
-	//cout << endl;
-
-	//======================grouping=========================
-	//int groupN = 1;
-	//int flag = 0;
-
-	//group[sortIdx[1]] = groupN;
-	//groupX2[groupN] = tong[sortIdx[1]][1];
-
-	////전체 그룹 세팅해주기
-	//for (int i = 2; i <= N; i++) {
-	//	//i번째 통나무 그룹 세팅
-	//	/*for (int j = 1; j <= groupN; j++) {*/
-	//	if (groupX2[groupN] >= tong[sortIdx[i]][0]) { //그 그룹에 속함
-	//		group[sortIdx[i]] = groupN;
-	//		groupX2[groupN] = groupX2[groupN] > tong[sortIdx[i]][1] ? groupX2[groupN] : tong[sortIdx[i]][1];
-	//	}
-	//	else { //속한 그룹 없다면
-	//		groupN++;
-	//		group[sortIdx[i]] = groupN;
-	//		groupX2[groupN] = tong[sortIdx[i]][1];
-	//	}
-	//}
 
 	for (int i = 1; i <= Q; i++) {
 		cin >> tong1 >> tong2;
@@ -182,7 +119,8 @@ int main() {
 	}
 
 	for (int i = 1; i <= Q; i++) {
-		cout << result[i] << endl;
+		printf("%d\n", result[i]);
+		//cout << result[i] << endl;
 	}
 
 	return 0;
