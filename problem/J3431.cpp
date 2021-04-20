@@ -5,7 +5,9 @@ using namespace std;
 
 const int N_MAX = 100000;
 const int INFINITI = 999;
+const int Q_MAX = 100000;
 
+int result[Q_MAX + 1] = { 0, };
 int tong[N_MAX + 1][2] = { 0, };
 int sortIdx[N_MAX + 1] = { 0, };
 int group[N_MAX + 1] = { 0, };
@@ -52,38 +54,69 @@ void sortTong(int N) {
 
 
 //quick sort로 구현해보기
+void quickSort(int start, int end, int N) {
 
+	int temp;
+	int pivot = start;
+	int i = pivot + 1; //왼쪽
+	int j = end; //오른쪽
 
+	if (start >= end) return;
 
-int jump(int tong1, int tong2, int N) {
-	
-	int nextTong, tong1SortIdx, tong2SortIdx;
-
-	for (int i = 1; i <= N; i++) {
-		if (sortIdx[i] == tong1) {
-			tong1SortIdx = i;
+	while (i <= j) {
+		while (i <= end && tong[sortIdx[i]][0] <= tong[sortIdx[pivot]][0]) {
+			i++;
 		}
-		if (sortIdx[i] == tong2) {
-			tong2SortIdx = i;
+		while (j > start && tong[sortIdx[j]][0] >= tong[sortIdx[pivot]][0]) {
+			j--;
+		}
+
+		if (i > j) {
+			temp = sortIdx[j];
+			sortIdx[j] = sortIdx[pivot];
+			sortIdx[pivot] = temp;
+		}
+		else {
+			temp = sortIdx[i];
+			sortIdx[i] = sortIdx[j];
+			sortIdx[j] = temp;
 		}
 	}
 
-	//tong1 index에서 tong2 index 사이 통나무 생각하기
-
-	for (int i = tong1SortIdx; i < tong2SortIdx; i++) {
-		if (tong[sortIdx[i]][1] < tong[sortIdx[i+1]][0]) {
-			return 0;
-		}
-	}
-
-	return 1;
+	quickSort(start, j - 1, N);
+	quickSort(j + 1, end, N);
 }
 
 void grouping(int N) {
+	//첫번째 group 1으로
+	int groupN = 1;
+	int flag = 0;
+	int cur = 0;
 
+	group[sortIdx[1]] = groupN;
+	groupX2[groupN] = tong[sortIdx[1]][1];
+	cur = groupX2[groupN];
 
-
+	//전체 그룹 세팅해주기
+	for (int i = 2; i <= N; i++) {
+		//i번째 통나무 그룹 세팅
+		/*for (int j = 1; j <= groupN; j++) {*/
+		if (cur >= tong[sortIdx[i]][0]) { //그 그룹에 속함
+			group[sortIdx[i]] = groupN;
+			if (cur < tong[sortIdx[i]][1]) {
+				groupX2[groupN] = tong[sortIdx[i]][1];
+				cur = groupX2[groupN];
+			}
+		}
+		else { //속한 그룹 없다면
+			groupN++;
+			group[sortIdx[i]] = groupN;
+			groupX2[groupN] = tong[sortIdx[i]][1];
+			cur = groupX2[groupN];
+		}
+	}
 }
+
 
 int main() {
 
@@ -95,28 +128,61 @@ int main() {
 
 	for (int i = 1; i <= N; i++) {
 		cin >> tong[i][0] >> tong[i][1] >> y;
+		sortIdx[i] = i;
 	}
-	
+
 	//x1(시작점) -> 길이 기준 정렬, 오름차순
-	sortTong(N);
+	//sortTong(N);
+
+
+	quickSort(1, N, N);
 
 	grouping(N);
+
+	//for (int i = 1; i <= N; i++) {
+	//	cout << sortIdx[i] << " ";
+	//}
+
+	//cout << endl;
+
+	//======================grouping=========================
+	//int groupN = 1;
+	//int flag = 0;
+
+	//group[sortIdx[1]] = groupN;
+	//groupX2[groupN] = tong[sortIdx[1]][1];
+
+	////전체 그룹 세팅해주기
+	//for (int i = 2; i <= N; i++) {
+	//	//i번째 통나무 그룹 세팅
+	//	/*for (int j = 1; j <= groupN; j++) {*/
+	//	if (groupX2[groupN] >= tong[sortIdx[i]][0]) { //그 그룹에 속함
+	//		group[sortIdx[i]] = groupN;
+	//		groupX2[groupN] = groupX2[groupN] > tong[sortIdx[i]][1] ? groupX2[groupN] : tong[sortIdx[i]][1];
+	//	}
+	//	else { //속한 그룹 없다면
+	//		groupN++;
+	//		group[sortIdx[i]] = groupN;
+	//		groupX2[groupN] = tong[sortIdx[i]][1];
+	//	}
+	//}
 
 	for (int i = 1; i <= Q; i++) {
 		cin >> tong1 >> tong2;
 
-		if (tong[tong2][0] < tong[tong1][0]) {
-			tmp = tong2;
-			tong2 = tong1;
-			tong1 = tmp;
-		}
-
-		if (tong[tong1][1] >= tong[tong2][0]) {
-			cout << 1 << endl;
+		if (group[tong1] == group[tong2]) {
+			//cout << 1 << endl;
+			result[i] = 1;
 		}
 		else {
-			cout << jump(tong1, tong2, N) << endl;
+			//cout << 0 << endl;
+			result[i] = 0;
 		}
+
+	}
+
+	for (int i = 1; i <= Q; i++) {
+		cout << result[i] << endl;
 	}
 
 	return 0;
