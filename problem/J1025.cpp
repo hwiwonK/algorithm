@@ -1,4 +1,4 @@
-//https://ioinformatics.org/files/ioi2007solutions.pdf
+//https://ioinformatics.org/files/ioi2007solutions.pdf - 
 
 // 좌표평면 상에서 N개의 점과 W개의 벽으로 표현된다.
 // 0이라는 시각에 홍수가 시작되어 벽으로 사방이 둘러싸이지 않은 모든 외곽이 물로 뒤덮인다. 
