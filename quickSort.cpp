@@ -36,7 +36,7 @@ void quickSort(int start, int end, int N) {
 
 //========================================================================
 //indexing 이용하기
-void quickSort(int start, int end, int N) {
+void quickSort(int start, int end, int N, double * arr) {
 
 	int temp;
 	int pivot = start;
@@ -46,25 +46,25 @@ void quickSort(int start, int end, int N) {
 	if (start >= end) return;
 
 	while (i <= j) {
-		while (i <= end && lader1Dist[i] <= lader2Dist[pivot]) {
+		while (i <= end && arr[i] <= arr[pivot]) {
 			i++;
 		}
-		while (j > start && lader1Dist[j] >= lader2Dist[pivot]) {
+		while (j > start && arr[j] >= arr[pivot]) {
 			j--;
 		}
 
 		if (i > j) {
-			temp = j;
-			j = pivot;
-			pivot = temp;
+			temp = arr[j];
+			arr[j] = arr[pivot];
+			arr[pivot] = temp;
 		}
 		else {
-			temp = i;
-			i = j;
-			j = temp;
+			temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
 		}
 	}
 
-	quickSort(start, j - 1, N);
-	quickSort(j + 1, end, N);
+	quickSort(start, j - 1, N, arr);
+	quickSort(j + 1, end, N, arr);
 }
