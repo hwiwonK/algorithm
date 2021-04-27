@@ -113,7 +113,28 @@ int findResult(int N, double limitR) {
 
 			if (peopleTmp < minPeople) minPeople = peopleTmp;
 		}
+		
+		//이렇게 해주지 않으면 Runtime Error 발생                       int peopleTmp = countPeople(lader1, lader2, N);
 
+113
+
+
+
+114
+
+                        if (peopleTmp < minPeople) minPeople = peopleTmp;
+
+115
+
+                }
+
+116
+
+                
+
+117
+
+                //이렇게 해주지 않으면 Runtime Error 발생  -> 끝 숫자가 0일 경우
 		if (lader1Dist[lader1Sort[lader1]] == 0) break;
 
 		while (lader1Dist[lader1Sort[lader1]] == lader1Dist[lader1Sort[lader1 + 1]]) lader1++;
