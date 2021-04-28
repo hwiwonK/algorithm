@@ -41,7 +41,7 @@ for loop로 돌리면 오히려 오버헤드 큼 <br>
 
 ### J1225 (기하 - 원)
 런타임 에러 주의하기
-- 처음 접근 방법
+- 처음 접근 방법 <br>
 사람 좌표 - 각 레이더 중심의 좌표 계산해서 lader1Dist 배열과 lader2Dist 배열에 나누어 저장함 <br>
 -> 모든 케이스 커버 불가능 (ex. 한 레이더로만 사람 검사하는 경우)<br>
 N 최대 : 5000 -> nlogn(quick sort) 2번 + N * (logN(binary search) + N) => 2ms 로 통과됨<br>
@@ -50,7 +50,7 @@ double tempR = k/(divideCntx3.141)<br>
 divideCnt 는 1000으로 선언, 1부터 1000까지 loop돌면서 lader1의 반지름(tempRxi), lader2의 반지름(tempRx(1000-i) 를 정하고, 어떤 점이 lader1에도 포함이 안되고, lader2에도 포함이 안되면? 감시 못하는 것!
 
 ### J2058 (BFS)
-- 처음 접근 방법
+- 처음 접근 방법<br>
 queue 두개 선언하여 동시에 bfs 진행하는 방법 -> 구현 어려움<br>
 queue 하나로도 모두 해결 가능하다 -> queue의 크기 커봤자 25x25x25x25(고돌이 좌표 경우 x 고소미 좌표 경우) 이므로 충분히 선언 가능하다
 
