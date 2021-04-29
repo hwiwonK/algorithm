@@ -35,7 +35,7 @@ double getAngleSort(int x1, int y1, int x2, int y2) {
 void sort(int loc[][2], int sortLoc[], int N) {
 	//시작점 찾기
 	int minVal = 99999;
-	int idx = -1;
+	int idx = -1; //이렇게 하면 런타임에러 날 수도 있을듯
 	for (int i = 1; i <= N; i++) {
 		if (loc[i][1] <= minVal) {
 			if (loc[i][1] == minVal && loc[i][0] < loc[idx][0]) idx = i;
