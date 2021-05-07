@@ -4,7 +4,7 @@ using namespace std;
 
 const int N_MAX = 1000;
 bool input[N_MAX + 1][N_MAX + 1] = { 0, };
-pair <int, int>	result[N_MAX + 1][N_MAX + 1]; //¾Ë¾Æ¼­ 0À¸·Î ÃÊ±âÈ­
+pair <int, int>	result[N_MAX + 1][N_MAX + 1]; //ì•Œì•„ì„œ 0ìœ¼ë¡œ ì´ˆê¸°í™”
 int dc[4] = { 0, 0, -1, 1 };
 int dr[4] = { -1, 1, 0, 0 };
 
@@ -23,15 +23,15 @@ void printList(bool arr[][N_MAX + 1], int N) {
 
 }
 
-//dfs - Àç±Í·Î ±¸Çö
+//dfs - ì¬ê·€ë¡œ êµ¬í˜„
 void findPath(int N, int row, int col, int i, int j) {
-	//input[row][col]¿¡¼­ °¥ ¼ö ÀÖ´Â ÁöÁ¡ ¸ğµÎ Ã¼Å©
+	//input[row][col]ì—ì„œ ê°ˆ ìˆ˜ ìˆëŠ” ì§€ì  ëª¨ë‘ ì²´í¬
 
-	//ÇöÀç Á¡ ¹æ¹® Ã¼Å© & ±â·Ï
+	//í˜„ì¬ ì  ë°©ë¬¸ ì²´í¬ & ê¸°ë¡
 	input[i][j] = true;
 	result[i][j] = make_pair(row, col);
 
-	//»ó-ÇÏ-ÁÂ-¿ì ¹æ¹® °¡´É½Ã ¹æ¹®
+	//ìƒ-í•˜-ì¢Œ-ìš° ë°©ë¬¸ ê°€ëŠ¥ì‹œ ë°©ë¬¸
 	for (int dir = 0; dir < 4; dir++) {
 		int rPos = i + dr[dir];
 		int cPos = j + dc[dir];
@@ -45,15 +45,15 @@ void findPath(int N, int row, int col, int i, int j) {
 }
 
 void findPathBfs(int N, int row, int col, int i, int j) {
-	//input[row][col]¿¡¼­ °¥ ¼ö ÀÖ´Â ÁöÁ¡ ¸ğµÎ Ã¼Å©
+	//input[row][col]ì—ì„œ ê°ˆ ìˆ˜ ìˆëŠ” ì§€ì  ëª¨ë‘ ì²´í¬
 
-	//ÇöÀç Á¡ push ÇÏ±â
+	//í˜„ì¬ ì  push í•˜ê¸°
 	queue[++rear] = make_pair(i, j);
 	input[row][col] = true;
 	result[row][col] = make_pair(row, col);
 
 	while (front != rear) {
-		//pop ÇØ¼­ ¹æ¹®ÇÏ±â
+		//pop í•´ì„œ ë°©ë¬¸í•˜ê¸°
 		pair <int, int> tmp = queue[++front];
 
 		for (int dir = 0; dir < 4; dir++) {
@@ -85,7 +85,7 @@ int main() {
 
 	for (int tc = 1; tc <= T; tc++) {
 
-		//ÀÔ·Â ¹Ş±â
+		//ì…ë ¥ ë°›ê¸°
 		scanf("%d %d", &N, &M);
 
 		for (int i = 1; i <= N; i++) {
@@ -103,7 +103,7 @@ int main() {
 			printf("\n");
 		}*/
 
-		//0¹ß°ßÇÏ¸é, ±× ÁöÁ¡¿¡¼­ °¥ ¼ö ÀÖ´Â ¸ğµç Á¡ Å½»ö
+		//0ë°œê²¬í•˜ë©´, ê·¸ ì§€ì ì—ì„œ ê°ˆ ìˆ˜ ìˆëŠ” ëª¨ë“  ì  íƒìƒ‰
 		for (int i = 1; i <= N; i++) {
 			for (int j = 1; j <= N; j++) {
 				if (!input[i][j]) {
@@ -112,7 +112,7 @@ int main() {
 			}
 		}
 
-		//M input ¹Ş°í °á°ú Ãâ·Â
+		//M input ë°›ê³  ê²°ê³¼ ì¶œë ¥
 
 		printf("#%d ", tc);
 
