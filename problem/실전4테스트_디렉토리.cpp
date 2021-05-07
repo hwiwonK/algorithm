@@ -6,8 +6,8 @@ using namespace std;
 
 const int N_MAX = 1000000;
 
-int setInfo[N_MAX + 1] = { 0, }; //ºÎ¸ğ Á¤º¸
-//int levelCnt[N_MAX + 1] = { 0, }; //°¢ level º° node count
+int setInfo[N_MAX + 1] = { 0, }; //ë¶€ëª¨ ì •ë³´
+//int levelCnt[N_MAX + 1] = { 0, }; //ê° level ë³„ node count
 int leafNode[N_MAX + 1] = { 0, };
 int leafCnt = 0;
 
@@ -32,14 +32,14 @@ int main() {
 
 		scanf("%d %d", &N, &topNode);
 
-		//N-1°³ Á¤º¸ ¹Ş±â
+		//N-1ê°œ ì •ë³´ ë°›ê¸°
 		for (int i = 1; i < N; i++) {
 			scanf("%d %d", &parent, &child);
 			setInfo[child] = parent;
 			//setInfo[parent][1] = child;
 		}
 
-		// leaf node Ã£±â
+		// leaf node ì°¾ê¸°
 		int flag = 1;
 		for (int i = 1; i <= N; i++) {
 			for (int node = 1; node <= N; node++) {
@@ -55,20 +55,20 @@ int main() {
 			flag = 1;
 		}
 
-		//leaf node grouping ÇÏ±â
+		//leaf node grouping í•˜ê¸°
 
-		//¸ğµç leaf node¿¡ ´ëÇØ¼­ root±îÁö ¿Ã¶ó°¡¸ç heap ¸¸µé±â
+		//ëª¨ë“  leaf nodeì— ëŒ€í•´ì„œ rootê¹Œì§€ ì˜¬ë¼ê°€ë©° heap ë§Œë“¤ê¸°
 
 		for (int leaf = 1; leaf <= leafCnt; leaf++) {
 
 			priority_queue<int, vector<int>, greater<int>> q;
 
-			//root ¿¡ µµ´ŞÇÒ ¶§±îÁö heap¿¡ ÇöÀç node ³Ö°í, ºÎ¸ğ ³ëµå¿Í ºñ±³
+			//root ì— ë„ë‹¬í•  ë•Œê¹Œì§€ heapì— í˜„ì¬ node ë„£ê³ , ë¶€ëª¨ ë…¸ë“œì™€ ë¹„êµ
 			for (int curNode = leafNode[leaf]; curNode != topNode; curNode) {
-				//ÇöÀç ³ëµå push
+				//í˜„ì¬ ë…¸ë“œ push
 				q.push(curNode);
 
-				//ºÎ¸ğ ³ëµå¿Í ºñ±³
+				//ë¶€ëª¨ ë…¸ë“œì™€ ë¹„êµ
 				int parentNode = setInfo[curNode];
 
 				priority_queue<int, vector<int>, greater<int>> tmp = q;
@@ -77,7 +77,7 @@ int main() {
 					resultCnt++;
 				}
 
-				//ÇöÀç ³ëµå ºÎ¸ğ ³ëµå·Î ¿Å°ÜÁÖ±â
+				//í˜„ì¬ ë…¸ë“œ ë¶€ëª¨ ë…¸ë“œë¡œ ì˜®ê²¨ì£¼ê¸°
 				curNode = parentNode;
 
 			}
