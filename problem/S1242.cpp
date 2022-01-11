@@ -1,3 +1,4 @@
+// ë¹„íŠ¸ íŒ¨í„´ë³´ë‹¤ ë¹„ìœ¨ì„ í™œìš©í•´ì„œ í•˜ëŠ”ê²Œ í›¨ì”¬ ë¹ ë¥´ë‹¤ -> ë‚˜ì¤‘ì— ìµœëŒ€ê³µì•½ìˆ˜ ì´ìš©í•´ì„œ ë‘ê»˜ 1 ì§œë¦¬ ë°ì´í„°ë¡œ ë§Œë“¤ê¸°
 
 #include <iostream>
 
@@ -9,7 +10,7 @@ const int COL_MAX = 500;
 char input[ROW_MAX + 1][COL_MAX + 1] = { 0, };
 int password[8][8][8][8] = { 0, };
 
-//col¿¡ ÀÖ´Â 16Áø¼ö¸¦ 2Áø¼ö·Î º¯È¯ÇÏ¿©, ¹è¿­ÀÇ idx ºÎÅÍ ÀúÀå
+//colï¿½ï¿½ ï¿½Ö´ï¿½ 16ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ï¿ï¿½, ï¿½è¿­ï¿½ï¿½ idx ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 void hexaToBinary(int * binaryArr, int idx, int row, int col) {
 	int num;
 	if (input[row][col] - 65 < 0) {
@@ -26,7 +27,7 @@ void hexaToBinary(int * binaryArr, int idx, int row, int col) {
 }
 
 bool getCode(int * binaryArr, int thick) {
-	int code[9] = { 0, }; //8ÀÚ¸® ÄÚµå
+	int code[9] = { 0, }; //8ï¿½Ú¸ï¿½ ï¿½Úµï¿½
 
 	int tmp[5] = { 0, };
 	//int codeLen = thick * 8;
@@ -36,33 +37,33 @@ bool getCode(int * binaryArr, int thick) {
 		
 		int idx = (codeIdx - 1) * thick;
 		int limit = idx + thick;
-		//1¼¼±â
+		//1ï¿½ï¿½ï¿½ï¿½
 		while (binaryArr[idx] == 1 && idx < limit) {
 			tmp[1]++;
 			idx++;
 		}
 
-		//0¼¼±â
+		//0ï¿½ï¿½ï¿½ï¿½
 		while (binaryArr[idx] == 0 && idx < limit) {
 			tmp[2]++;
 			idx++;
 		}
 
-		//1¼¼±â
+		//1ï¿½ï¿½ï¿½ï¿½
 		while (binaryArr[idx] == 1 && idx < limit) {
 			tmp[3]++;
 			idx++;
 		}
 
-		//0¼¼±â
+		//0ï¿½ï¿½ï¿½ï¿½
 		while (binaryArr[idx] == 0 && idx < limit) {
 			tmp[4]++;
 			idx++;
 		}
 
-		//if (idx != i + thick) return false; //¼ıÀÚ ¸¸µé±â ºÒ°¡
+		//if (idx != i + thick) return false; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò°ï¿½
 
-		//¼ıÀÚ ¸¸µé±â °¡´ÉÇÏ´Ù¸é ¼ıÀÚ Ã£±â
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½
 		int num = password[tmp[4]][tmp[3]][tmp[2]][tmp[1]];
 		if (num != 0) {
 			code[codeIdx] = num;
@@ -75,41 +76,41 @@ bool getCode(int * binaryArr, int thick) {
 
 	}
 
-	//ÄÚµå ´Ù ÃßÃâÇß´Ù¸é °ËÁõÇÏ±â
+	//ï¿½Úµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß´Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 	int check = (code[1] + code[3] + code[5] + code[7]) * 3 + code[2] + code[4] + code[6] + code[8];
 	if (check % 10 == 0) {
 		int sumCode = code[1] + code[3] + code[5] + code[7] + code[2] + code[4] + code[6] + code[8];
 		printf("%d", sumCode);
 	}
 
-	//¹è¿­ ÃÊ±âÈ­
+	//ï¿½è¿­ ï¿½Ê±ï¿½È­
 
 	return true;
 
 }
 
 void getCode(int row, int col) {
-	int binaryArr[(COL_MAX + 1) << 2 + 1] = { 0, }; //2Áø¼ö ÀúÀå : x4 ¸¸Å­ Å©±â ´Ã·ÁÁà¾ß
+	int binaryArr[(COL_MAX + 1) << 2 + 1] = { 0, }; //2ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : x4 ï¿½ï¿½Å­ Å©ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ï¿½
 	int idx = 1;
 	int curCol = col;
-	//16Áø¼ö -> 2Áø¼ö
+	//16ï¿½ï¿½ï¿½ï¿½ -> 2ï¿½ï¿½ï¿½ï¿½
 	while (curCol != 0) {
 		hexaToBinary(binaryArr, idx, row, curCol);
 		idx += 4;
 		curCol--;
 	}
 
-	//ÄÚµå È®ÀÎÇÏ±â
+	//ï¿½Úµï¿½ È®ï¿½ï¿½ï¿½Ï±ï¿½
 
-	//½ÃÀÛÁ¡ Ã£±â : ¹«Á¶°Ç 1·Î ½ÃÀÛ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	int start = 1;
 	while (true) {
 		if (binaryArr[start] == 1) break;
 	}
 
-	//¼±ÀÇ ±½±â (7, 14, 21 ... ´Ã·Á°¡¸é¼­)
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (7, 14, 21 ... ï¿½Ã·ï¿½ï¿½ï¿½ï¿½é¼­)
 
-	//ÃÖ´ë ±½±â = (col - 0) / 8
+	//ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ = (col - 0) / 8
 	int maxThick = (col - 0) / 8;
 
 	for (int thick = 7; thick <= maxThick; thick++) {
@@ -123,10 +124,10 @@ int main() {
 
 	freopen("input.txt", "r", stdin);
 
-	//¾ÏÈ£ ¼ıÀÚ ¼¼ÆÃ
-	//¾ø´Â ºÎºĞÀº -1·Î
+	//ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½ï¿½ï¿½ -1ï¿½ï¿½
 
-	password[3][2][1][1] = -1; //¼ıÀÚ ¾ø´Â ºÎºĞ°ú ±¸ºĞÇÏ±â À§ÇØ
+	password[3][2][1][1] = -1; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ÎºĞ°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	password[2][2][2][1] = 1;
 	password[2][1][2][2] = 2;
 	password[1][4][1][1] = 3;

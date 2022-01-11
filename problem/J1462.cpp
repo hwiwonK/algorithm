@@ -1,3 +1,6 @@
+// char ë³´ë‹¤ëŠ” string ë‹¨ìœ„ë¡œ ë¬¸ì œ í•´ê²°í•˜ëŠ”ê²Œ ì¢€ ë” ë¹ ë¥´ë‹¤.
+
+
 #include <iostream>
 
 using namespace std;
@@ -10,7 +13,7 @@ int d[4][2] = { {0, -1}, {1, 0}, {0, 1}, {-1, 0} };
 
 int maxDist = -1;
 
-//queue °ü·Ã
+//queue ï¿½ï¿½ï¿½ï¿½
 struct land
 {
 	int y;
@@ -18,7 +21,7 @@ struct land
 	int time;
 };
 
-struct land queue[(N_MAX * N_MAX)] = { 0, }; // yÁÂÇ¥, xÁÂÇ¥, ½Ã°£
+struct land queue[(N_MAX * N_MAX)] = { 0, }; // yï¿½ï¿½Ç¥, xï¿½ï¿½Ç¥, ï¿½Ã°ï¿½
 
 int front = -1;
 int rear = -1;
@@ -32,12 +35,12 @@ void enqueue(int y, int x, int time) {
 
 void bfs(int y, int x, int N, int M) {
 
-	//y, x Å¥¿¡ ³Ö±â
-	enqueue(y, x, 0); //½Ã°£Àº 0
+	//y, x Å¥ï¿½ï¿½ ï¿½Ö±ï¿½
+	enqueue(y, x, 0); //ï¿½Ã°ï¿½ï¿½ï¿½ 0
 	visit[y][x] = true;
 
 	while (front != rear) {
-		//¹æ¹®
+		//ï¿½æ¹®
 		front++;
 		int curX = queue[front].x;
 		int curY = queue[front].y;
@@ -48,10 +51,10 @@ void bfs(int y, int x, int N, int M) {
 			int xpos = curX + d[a][1];
 			int ypos = curY + d[a][0];
 
-			//°æ°è¼± Ã¼Å©
+			//ï¿½ï¿½è¼± Ã¼Å©
 			if (ypos >= N || xpos >= M || xpos < 0 || ypos < 0) continue;
 
-			//queue¿¡ ¾ø´Ù¸é & À°Áö¶ó¸é enqueue
+			//queueï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½ & ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ enqueue
 			if (!visit[ypos][xpos] && treasure[ypos][xpos] == 'L') {
 				visit[ypos][xpos] = true;
 				enqueue(ypos, xpos, curTime + 1);
@@ -59,12 +62,12 @@ void bfs(int y, int x, int N, int M) {
 		}
 	}
 
-	// ´õ Å« À°Áö-À°Áö ÃÖ´Ü°Å¸® ³ª¿ÔÀ» ¶§ maxDist °»½Å
+	// ï¿½ï¿½ Å« ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ü°Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ maxDist ï¿½ï¿½ï¿½ï¿½
 	if (maxDist < queue[rear].time) maxDist = queue[rear].time;
 
 }
 
-//queue, visit ¹è¿­ ÃÊ±âÈ­
+//queue, visit ï¿½è¿­ ï¿½Ê±ï¿½È­
 void resetQueue(int N, int M) {
 	front = -1;
 	rear = -1;
@@ -91,7 +94,7 @@ int main() {
 		}
 	}
 
-	//À°Áö Ã£À¸¸é bfs
+	//ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ï¿½ï¿½ bfs
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < M; j++) {
 			if (treasure[i][j] == 'L') {

@@ -1,3 +1,6 @@
+// 처음 생각 : dp 이용하려고 함 <br>
+// 1500번 수가 억단위라서 억 단위의 배열 필요 => heap을 이용해야 한다 (1500x3 크기)
+
 #include <iostream>
 
 using namespace std;

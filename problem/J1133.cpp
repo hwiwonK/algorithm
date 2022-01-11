@@ -1,3 +1,6 @@
+// 새로운 minCorner 선언 안하고, 기존 input 배열 이용해도 됨
+
+
 #include <iostream>
 #include <math.h>
 

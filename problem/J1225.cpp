@@ -1,3 +1,12 @@
+// 런타임 에러 주의하기
+// - 처음 접근 방법 <br>
+// 사람 좌표 - 각 레이더 중심의 좌표 계산해서 lader1Dist 배열과 lader2Dist 배열에 나누어 저장함 <br>
+// -> 모든 케이스 커버 불가능 (ex. 한 레이더로만 사람 검사하는 경우)<br>
+// N 최대 : 5000 -> nlogn(quick sort) 2번 + N * (logN(binary search) + N) => 2ms 로 통과됨<br>
+// ================= 굳이 퀵소트 안해도 됨 ===================<br>
+// double tempR = k/(divideCntx3.141)<br>
+// divideCnt 는 1000으로 선언, 1부터 1000까지 loop돌면서 lader1의 반지름(tempRxi), lader2의 반지름(tempRx(1000-i) 를 정하고, 어떤 점이 lader1에도 포함이 안되고, lader2에도 포함이 안되면? 감시 못하는 것!
+
 #include <iostream>
  
 using namespace std;

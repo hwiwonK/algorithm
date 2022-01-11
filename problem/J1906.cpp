@@ -1,17 +1,22 @@
+// ê³µí†µ ì¡°ìƒì„ êµ¬í•˜ëŠ ë°©ë²• <br>
+// visit ë°°ì—´ ì´ìš©í•˜ëŠ” ë°©ë²• -> ì´ ë¬¸ì œì—ì„œëŠ” count ë¥¼ ì €ì¥í•˜ë©´ ë¨ (ì´Œìˆ˜ ê³„ì‚° ìœ„í•´) <br>
+// level ì´ìš©í•˜ëŠ” ë°©ë²• -> ë©”ëª¨ë¦¬ ì‚¬ìš© ì•ˆí•´ë„ ë¨
+// ***ë¶€ëª¨ ì •ë³´ ì €ì¥í•  ë•Œ êµ³ì´ ë”°ë¡œ ì´ˆê¸°í™” ê³¼ì • ê±°ì¹  í•„ìš” ì—†ë‹¤. ê·¸ëƒ¥ 0ìœ¼ë¡œ í•´ë„ ë¨*
+
 #include <iostream>
 
 using namespace std;
 
 const int N_MAX = 100;
 
-//ºÎ¸ğ Á¤º¸ ÀúÀå
+//ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 int tree[N_MAX + 1] = { 0, };
 
 int findParent(int child1, int child2) {
 
 	int child1Parent[N_MAX] = { 0, };
 
-	//child1 Á¶»ó Ã£±â
+	//child1 ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½
 	int parentCnt1 = 0;
 
 	while (tree[child1] != child1) {
@@ -22,7 +27,7 @@ int findParent(int child1, int child2) {
 	child1Parent[parentCnt1] = child1;
 
 
-	//child2 Á¶»ó Ã£±â
+	//child2 ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½
 	int child2Parent[N_MAX] = { 0, };
 
 	int parentCnt2 = 0;
@@ -42,7 +47,7 @@ int findParent(int child1, int child2) {
 		}
 	}
 
-	//°øÅë Á¶»ó ¾øÀ» °æ¿ì
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	return -1;
 }
 
@@ -54,7 +59,7 @@ int main() {
 
 	scanf("%d %d %d %d", &n, &a, &b, &m);
 
-	//tree¹è¿­ setting
+	//treeï¿½è¿­ setting
 	for (int i = 1; i <= n; i++) {
 		tree[i] = i;
 	}
@@ -67,7 +72,7 @@ int main() {
 		tree[child] = parent;
 	}
 
-	//a ¿Í bÀÇ °¡Àå °¡±î¿î °øÅëÁ¶»ó Ã£±â
+	//a ï¿½ï¿½ bï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½
 
 	printf("%d", findParent(a, b));
 
